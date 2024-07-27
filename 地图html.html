@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Line Chart</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="lineChart" width="800" height="400"></canvas>
+
+    <script>
+    // 准备数据
+    const years = ["道光年间", "咸丰年间", "同治年间", "光绪年间", "宣统年间"];
+    const counts = [29, 29, 19, 119, 2];
+
+    // 获取 canvas 元素
+    const ctx = document.getElementById('lineChart').getContext('2d');
+
+    // 创建折线图
+    const lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+        labels: years,
+        datasets: [{
+            label: '次数',
+            data: counts,
+            borderColor: 'rgb(75, 192, 192)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            tension: 0.1,
+        }]
+        },
+        options: {
+        plugins: {
+            title: {
+            display: true,
+            text: '清朝年间民事纠纷中坎儿井买卖动态折线图',
+            font: {
+                size: 18,
+                weight: 'bold'
+            }
+            }
+        },
+        scales: {
+            y: {
+
+                beginAtZero: true,
+                min: 0,
+                max: 150,
+                ticks: {
+                stepSize: 50
+            }
+            }
+        }
+        }
+    });
+    </script>
+</body>
+</html>
+
